@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>Netlify Avatar</title>
+</head>
+
+<body>
+    <h1>Netlify Avatar</h1>
+    <p>Generate avatar on-the-fly using netlify functions.</p>
+    <p>Examples:</p>
+    <script>
+        let
+            url = location.protocol + '//' + location.host + '/.netlify/functions/avatar?name=',
+            r = '0x' + Math.floor(Math.random() * 1000000),
+            names = ['bob', 'alice', r];
+        for (let name of names) {
+            document.write('<p><a href="' + url + name + '">' + url + name + '</a><br>');
+            document.write('<img src="' + url + name + '" style="width:100px;height:100px"></p>');
+        }
+    </script>
+    <h1>Env Config</h1>
+    <p>WHITE_LIST: domain list sperated by ','. e.g. 'https://multiple-custom-functions.netlify.app'. default to empty ('').
+        '*.example.com' is not supported yet.</p>
+    <p>MAX_AGE: max age for generated image, default to '3600'.</p>
+</body>
+
+</html>
